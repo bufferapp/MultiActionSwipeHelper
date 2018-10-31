@@ -133,9 +133,6 @@ class SwipeToPerformActionCallback(private val swipeListener: SwipeActionListene
                           horizontalTouchPosition: Float) {
         val position =
                 if (Math.abs(horizontalTouchPosition) < (viewHolder.itemView.width / 2)) 0 else 1
-        // Drag direction is opposite as `direction` is the direction you are dragging, but our
-        // icon direct is classified as the side in which means this needs to be flipped. Will
-        // make this clearer at some point in another PR
         val dragDirection = if (direction == LEFT) RIGHT else LEFT
         val fallback = if (position == 0) 1 else 0
         val action = ActionHelper.handleAction(conversationActions, dragDirection, position,
